@@ -1,19 +1,13 @@
 # Membuat Pencarian Data dan Membuat Pagination
-## Pencarian Data
 
-Untuk membuat pencarian data, yang perlu di perhatikan adalah penggunaan filter pada query data. Pada data awal, query untuk menampilkan semua data adalah:
+Untuk membuat pencarian data, query data.
 ```
 $sql = “SELECT * FROM data_barang”;
 
 ```
-Nah untuk menambahkan pencarian, maka query tersebut harus ditambahkan klausa WHERE sebagai filter, sehingga menjadi:
+Nah untuk menambahkan pencarian
 ```
 $sql = “SELECT * FROM data_barang WHERE nama = ‘{$var_nama}’”;
-```
-
-Atau dapat juga menggunakan LIKE seperti berikut:
-```
-$sql = “SELECT * FROM data_barang WHERE nama LIKE ‘{$var_nama}%’”;
 ```
 
 Langkah selanjutnya adalah membuat form pencarian.
@@ -29,8 +23,7 @@ Langkah selanjutnya adalah membuat form pencarian.
 ```
 
 ![img](ss/ss4.png)
-Sisipkan kode tersebut pada file index.php (daftar barang), sebelum table data dan sesudah tombol tambah data.
-Lalu rubah querynya dan tambahkan filter pencarian pada query tersebut.
+Sisipkan kode tersebut pada file index.php (daftar barang), s
 ```
 include_once 'koneksi.php';
 
@@ -70,21 +63,20 @@ $result = mysqli_query($conn, $sql);
 ![img](ss/ss1.png)
 
 ## Membuat Pagination
-Pagination digunakan untuk membatasi atau membagi record data yang akan ditampilkan pada laman web. Dari seluruh record data yang ada akan dibagi berdasarkan jumlah record per-halaman.
 
-Pada prinsipnya untuk membatasi tampilan record data pada query mysql menggunakan LIMIT dan OFFSET;
+menggunakan LIMIT dan OFFSET;
 
 Query alwal:
 ```
 $sql = “SELECT * FROM tabel_barang”;
 ```
 
-Untuk menapilkan data dari record ke 1 sampai record ke 10:
+record ke 1 sampai record ke 10:
 ```
 $sql = “SELECT * FROM table_barang LIMIT 10”;
 ```
 
-Untuk menampilkan data dari receord ke 11 sampai dengan record ke 20, disini digunakan OFFSET:
+ke 11 sampai dengan record ke 20, disini digunakan OFFSET:
 ```
 $sql = “SELECT * FROM table_barang LIMIT 10,20”;```
 
@@ -95,11 +87,11 @@ Untuk mengetahui jumlah record secara keseluruhan:
 $sql = “SELECT COUNT(*) FROM table_barang”;
 
 ```
-Misal resultnya adalah 30 record, akan ditampilkan perhalaman sejumlah 10 record, maka:
+Misal resultnya adalah 30 record, akan ditampilkan sejumlah 10 record, 
 ```
 $page = $row_count / $per_page; ==> 3 = 30/10```
 
-Maka akan dihasilkan 3 halaman, sehingga paging dibuat menjadi tiga tombol (1, 2, 3).
+Maka akan dihasilkan 3 halaman, sehingga menjadi tiga tombol (1, 2, 3).
 
 ## Membuat File: index.php
 Lakukan perubahan code mulai baris 10:
